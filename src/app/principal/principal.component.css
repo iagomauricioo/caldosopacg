@@ -114,6 +114,7 @@ strong {
   border-radius: 50%;
   top: 29%;
   right: 18%;
+  animation: moveUpDown 3s ease-in-out infinite;
 }
 
 @media (max-width: 1440px) {

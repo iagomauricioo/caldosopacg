@@ -8,3 +8,8 @@
   justify-content: space-evenly;
 }
 
+.images-mat {
+  width: 100%; /* A imagem vai preencher a largura do card */
+  height: 300px; /* Definindo uma altura fixa para as imagens */
+  object-fit: cover; /* As imagens preencherão o espaço sem distorção, mas podem ser cortadas */
+}

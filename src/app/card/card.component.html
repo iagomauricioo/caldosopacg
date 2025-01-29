@@ -2,31 +2,26 @@
   <mat-card-header
     style="display: flex; align-items: center; justify-content: center"
   >
-    <mat-card-title>Sopa de carne</mat-card-title>
+    <mat-card-title>{{ item.name }}</mat-card-title>
     <mat-card-subtitle style="text-align: center">Apimentada</mat-card-subtitle>
   </mat-card-header>
-  <img
-    mat-card-image
-    src="https://images.pexels.com/photos/539451/pexels-photo-539451.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-    alt="Photo of a Shiba Inu"
-  />
+  <img mat-card-image [src]="item.image" [alt]="item.name" class="images-mat"/>
   <mat-card-content>
     <p style="text-align: center">
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut iusto
-      corrupti quisquam consectetur ab deleniti ipsa dicta ipsum commodi
-      eligendi iure exercitationem, molestias impedit dolor, id magni maxime
-      aspernatur cum?
+      {{ item.description }}
     </p>
   </mat-card-content>
+
   <mat-card-actions class="actions">
-    <button mat-stroked-button disabled style="color: var(--forest-green); font-size: 20px"
-      ><i class="pi pi-money-bill"></i> R$13,00
+    <button
+      mat-stroked-button
+      disabled
+      style="color: var(--forest-green); font-size: 20px"
+    >
+      <i class="pi pi-money-bill"></i> R${{ item.price.toFixed(2) }}
     </button>
     <span>
-      <a
-        href="https://api.whatsapp.com/send?phone=558293127500&text=Ol%C3%A1%2C%20quero%20fazer%20um%20pedido%21"
-        target="_blank"
-      >
+      <a [href]="item.whatsappLink" target="_blank">
         <button
           mat-flat-button
           style="background-color: var(--blood-red); font-weight: 900"
