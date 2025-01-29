@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { CardComponent } from '../card/card.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { NavComponent } from "../nav/nav.component";
 import { FooterComponent } from "../footer/footer.component";
+import { PrincipalComponent } from "../principal/principal.component";
 
 @Component({
   selector: 'app-home',
@@ -11,11 +12,11 @@ import { FooterComponent } from "../footer/footer.component";
     CardComponent,
     MatGridListModule,
     NavComponent,
-    FooterComponent
+    FooterComponent,
+    PrincipalComponent
 ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-
 }

@@ -16,3 +16,7 @@
   --forest-green: #0c9b18ff;
   --sgbus-green: #6acc1aff;
 }
+
+html {
+  scroll-behavior: smooth;
+}
