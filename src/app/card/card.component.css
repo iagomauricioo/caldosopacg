@@ -1,0 +1,10 @@
+.example-card {
+  max-width: 400px;
+  gap: 10px;
+}
+
+.actions {
+  display: flex;
+  justify-content: end;
+}
+

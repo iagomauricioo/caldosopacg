@@ -1,1 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+@import "primeicons/primeicons.css";
+
+* {
+  font-family: "Heebo", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+:root {
+  --blood-red: #630304ff;
+  --engineering-orange: #af2916ff;
+  --pumpkin: #f4781eff;
+  --jonquil: #fdcb11ff;
+  --yellow: #fffe3aff;
+  --office-green: #03750dff;
+  --forest-green: #0c9b18ff;
+  --sgbus-green: #6acc1aff;
+}
