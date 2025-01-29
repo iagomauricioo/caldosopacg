@@ -11,7 +11,7 @@
     alt="Photo of a Shiba Inu"
   />
   <mat-card-content>
-    <p>
+    <p style="text-align: center">
       Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut iusto
       corrupti quisquam consectetur ab deleniti ipsa dicta ipsum commodi
       eligendi iure exercitationem, molestias impedit dolor, id magni maxime
@@ -19,15 +19,21 @@
     </p>
   </mat-card-content>
   <mat-card-actions class="actions">
-    <a
-      href="https://api.whatsapp.com/send?phone=558293127500&text=Ol%C3%A1%2C%20quero%20fazer%20um%20pedido%21" target="_blank"
-    >
-      <button
-        mat-flat-button
-        style="background-color: var(--blood-red); font-weight: 900"
+    <button mat-stroked-button disabled style="color: var(--forest-green); font-size: 20px"
+      ><i class="pi pi-money-bill"></i> R$13,00
+    </button>
+    <span>
+      <a
+        href="https://api.whatsapp.com/send?phone=558293127500&text=Ol%C3%A1%2C%20quero%20fazer%20um%20pedido%21"
+        target="_blank"
       >
-        QUERO! <i class="pi pi-whatsapp"></i>
-      </button>
-    </a>
+        <button
+          mat-flat-button
+          style="background-color: var(--blood-red); font-weight: 900"
+        >
+          QUERO! <i class="pi pi-whatsapp"></i>
+        </button>
+      </a>
+    </span>
   </mat-card-actions>
 </mat-card>
