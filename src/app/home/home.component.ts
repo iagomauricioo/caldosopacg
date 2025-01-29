@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CardComponent } from '../card/card.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { NavComponent } from "../nav/nav.component";
+import { FooterComponent } from "../footer/footer.component";
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,8 @@ import { NavComponent } from "../nav/nav.component";
   imports: [
     CardComponent,
     MatGridListModule,
-    NavComponent
+    NavComponent,
+    FooterComponent
 ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
