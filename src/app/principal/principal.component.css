@@ -210,5 +210,5 @@ button {
 
 button:hover {
   transform: scale(1.1); /* Aumenta o tamanho do botão */
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra */
+  box-shadow: 0px 20px 24px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra */
 }
