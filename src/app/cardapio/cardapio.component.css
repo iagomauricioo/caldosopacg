@@ -1,0 +1,5 @@
+@media (max-width: 320px) {
+  #cardapio {
+    height: 100vh;
+  }
+}

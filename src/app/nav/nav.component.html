@@ -9,15 +9,16 @@
       justify-content: center;
       gap: 20px;
     "
+    id="nav-container"
   >
-    <span>Caldos e Sopas CG</span>
+    <span id="title">Caldos e Sopas CG</span>
     <a
       href="https://api.whatsapp.com/send?phone=558293127500&text=Ol%C3%A1%2C%20quero%20fazer%20um%20pedido%21"
       target="_blank"
     >
-      <button mat-flat-button style="background-color: var(--forest-green)">
-        Peça já seu caldo!
-        <i class="pi pi-whatsapp"></i>
+      <button id="button-zap" mat-flat-button style="background-color: var(--forest-green)">
+        <span id="title-button-zap">Peça já seu caldo!</span>
+        <i id="zap-icon" class="pi pi-whatsapp"></i>
       </button>
     </a>
   </div>
@@ -33,6 +34,7 @@
       matTooltip="Copiar link do site"
       matTooltipHideDelay="100000"
       (click)="openSnackBar(message, action)"
+      id="share-icon"
     >
       <mat-icon>share</mat-icon>
     </button>

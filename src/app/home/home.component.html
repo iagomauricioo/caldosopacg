@@ -1,8 +1,5 @@
 <app-nav />
 <app-principal />
-<mat-grid-list cols="3" id="cardapio">
-  <mat-grid-tile *ngFor="let item of menuItems">
-    <app-card [item]="item" />
-  </mat-grid-tile>
-</mat-grid-list>
-<app-footer />
+<p-divider class="reveal" />
+<app-cardapio class="reveal" />
+<app-footer class="reveal" />

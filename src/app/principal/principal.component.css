@@ -115,6 +115,7 @@ strong {
   top: 29%;
   right: 18%;
   animation: moveUpDown 3s ease-in-out infinite;
+  z-index: 2;
 }
 
 @media (max-width: 1440px) {
@@ -168,6 +169,27 @@ strong {
   }
 }
 
+#text-principal-2 {
+  display: none;
+}
+
+@keyframes moveCircular {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  25% {
+    transform: translate(15px, 15px);
+  }
+  50% {
+    transform: translate(0px, 30px);
+  }
+  75% {
+    transform: translate(-15px, 15px);
+  }
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
 @media (max-width: 768px) {
   #elipse {
     width: 230px;
@@ -181,19 +203,56 @@ strong {
 @media (max-width: 425px) {
   h1 {
     font-size: 30px;
+    display: none;
   }
 
   #elipse {
     width: 200px;
-    left: 22%;
+    left: 12%;
+    top: 20%;
   }
 
   #photo {
     width: 200px;
+    top: 12%;
     left: 25%;
+    animation: moveCircular 3s linear infinite;
   }
 }
 
+@media (max-width: 320px) {
+  #text-principal {
+    display: none;
+  }
+
+  #text-principal-2 {
+    display: block;
+    font-size: 14px;
+    text-align: justify;
+    padding-top: 60px;
+  }
+
+  h3 {
+    font-size: 30px;
+    font-weight: 500;
+    padding-bottom: 10px;
+  }
+
+  #button-cardapio {
+    width: 70vw;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  #anchor-cardapio {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
 
 /* Rectangle 10 */
 button {

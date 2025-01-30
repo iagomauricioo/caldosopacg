@@ -1,0 +1,5 @@
+<mat-grid-list [cols]="cols" id="cardapio">
+  <mat-grid-tile id="item" *ngFor="let item of menuItems">
+    <app-card [item]="item" />
+  </mat-grid-tile>
+</mat-grid-list>

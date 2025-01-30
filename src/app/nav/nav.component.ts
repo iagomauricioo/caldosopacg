@@ -53,13 +53,6 @@ export class NavComponent {
 
   copyLink(): void {
     const link = window.location.href;
-    navigator.clipboard
-      .writeText(link)
-      .then(() => {
-        console.log('Link copiado com sucesso!');
-      })
-      .catch((err) => {
-        console.error('Erro ao copiar o link: ', err);
-      });
+    navigator.clipboard.writeText(link);
   }
 }

@@ -9,7 +9,27 @@
 }
 
 .images-mat {
-  width: 100%; /* A imagem vai preencher a largura do card */
-  height: 300px; /* Definindo uma altura fixa para as imagens */
-  object-fit: cover; /* As imagens preencherão o espaço sem distorção, mas podem ser cortadas */
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+
+@media (max-width: 320px) {
+  .example-card {
+    max-width: 250px;
+    gap: 20px;
+    font-size: 12px;
+    margin-top: 500px;
+    margin-bottom: 250px;
+  }
+
+  .images-mat {
+    height: 200px;
+  }
+
+  #text-zap {
+    display: none;
+  }
+
 }
