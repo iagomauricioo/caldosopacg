@@ -98,7 +98,7 @@ export default function Home() {
       <div className="px-4 mb-6">
         <div className="relative overflow-hidden rounded-xl shadow-inner">
           <Image
-            src="/assets/caldo1.png"
+            src="/assets/caldo3.png"
             alt="Caldeirão de caldo fumegante"
             width={400}
             height={200}

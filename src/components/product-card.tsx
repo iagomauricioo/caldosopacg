@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
+import { Plus } from "lucide-react";
 
 interface ProductCardProps {
   id: number;
@@ -19,12 +20,18 @@ export function ProductCard({ id, name, price, image }: ProductCardProps) {
           className="object-cover"
         />
       </div>
-      <CardContent className="p-3">
-        <h3 className="font-medium">{name}</h3>
-        <p className="text-amber-600 font-bold mt-1">
-          R$ {price.toFixed(2).replace(".", ",")}
-        </p>
+      <CardContent className="p-3 flex flex-col gap-2">
+        <div className="flex flex-col">
+          <h3 className="font-bold text-xl text-emerald-700">{name}</h3>
+          <p className="text-amber-600 font-bold mt-1">
+            R$ {price.toFixed(2).replace(".", ",")}
+          </p>
+        </div>
+        <button className="w-full p-2 bg-amber-600 rounded-lg text-white hover:bg-amber-700 transition-colors flex items-center justify-center gap-2">
+          <Plus className="w-5 h-5" />
+          <span className="text-sm font-medium">Pedir</span>
+        </button>
       </CardContent>
     </Card>
   );
-} 
+}
