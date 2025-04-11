@@ -3,13 +3,12 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Plus } from "lucide-react";
 
 interface ProductCardProps {
-  id: number;
   name: string;
   price: number;
   image: string;
 }
 
-export function ProductCard({ id, name, price, image }: ProductCardProps) {
+export function ProductCard({ name, price, image }: ProductCardProps) {
   return (
     <Card className="bg-white border-0 shadow-sm overflow-hidden h-full">
       <div className="relative min-w-64 min-h-64 mx-auto mt-3 rounded-lg overflow-hidden">

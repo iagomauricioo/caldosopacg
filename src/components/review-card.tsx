@@ -3,14 +3,13 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Star } from "lucide-react";
 
 interface ReviewCardProps {
-  id: number;
   name: string;
   rating: number;
   comment: string;
   avatar: string;
 }
 
-export function ReviewCard({ id, name, rating, comment, avatar }: ReviewCardProps) {
+export function ReviewCard({ name, rating, comment, avatar }: ReviewCardProps) {
   return (
     <Card className="bg-white border-0 shadow-sm h-full">
       <CardContent className="p-4 shadow-inner">

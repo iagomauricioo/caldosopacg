@@ -4,10 +4,10 @@ import { ShoppingCart as Cart, Soup } from "lucide-react"
 import { useState } from "react"
 
 export default function BottomNav() {
-  const [activeTab, setActiveTab] = useState("cardapio")
+  const [, setActiveTab] = useState("cardapio")
 
   return (
-    
+
     <div className="fixed z-50 w-full max-w-lg bottom-4 px-6">
       <div className="relative h-16 bg-[#0B3B2C] rounded-full shadow-lg">
         <div className="grid h-full grid-cols-3 mx-auto">
