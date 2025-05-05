@@ -25,7 +25,6 @@ export default function Navbar() {
               </span>
             )}
           </Link>
-          <button className="text-2xl">≡</button>
         </div>
       </div>
 
