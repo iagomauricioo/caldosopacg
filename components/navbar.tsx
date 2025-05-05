@@ -13,7 +13,9 @@ export default function Navbar() {
     <header className="bg-[#0B3B2C] text-amber-50">
       {/* Mobile Navbar */}
       <div className="flex justify-between items-center p-4 md:hidden">
-        <h1 className="text-2xl font-bold">Caldos da Cynthia</h1>
+        <Link href="/">
+            <h1 className="text-2xl font-bold">Caldos da Cynthia</h1>
+        </Link>
         <div className="flex items-center gap-4">
           <Link href="/carrinho" className="relative">
             <ShoppingCart className="w-6 h-6 fill-amber-100" />
