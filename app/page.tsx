@@ -8,7 +8,7 @@ import Navbar from "@/components/navbar";
 import { Minus, Plus } from "lucide-react";
 
 export default function Home() {
-  const { items, addItem, updateQuantity, totalItems, totalPrice } = useCart();
+  const { items, addItem, updateQuantity } = useCart();
 
   // Função para obter a quantidade de um item no carrinho
   const getItemQuantity = (id: string) => {
@@ -44,67 +44,65 @@ export default function Home() {
         </div>
 
         {/* Mais pedidos Section */}
-        <section className="px-4 md:px-8 max-w-7xl mx-auto mb-8">
-          <div className="px-4 md:px-8 max-w-7xl mx-auto mb-40">
-            <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-[#0B3B2C]">
-              Os mais pedidos 🔥
-            </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {products.map((product) => {
-                const quantity = getItemQuantity(product.id);
+        <section className="px-4 md:px-8 max-w-7xl mx-auto mb-40">
+          <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-[#0B3B2C]">
+            Os mais pedidos 🔥
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {products.map((product) => {
+              const quantity = getItemQuantity(product.id);
 
-                return (
-                  <div
-                    key={product.id}
-                    className="bg-white rounded-lg shadow-md p-4"
-                  >
-                    <Image
-                      src={product.image || "/placeholder.svg"}
-                      alt={product.name}
-                      width={400}
-                      height={200}
-                      className="w-full h-48 object-cover rounded-md mb-4"
-                    />
-                    <h3 className="text-xl font-bold">{product.name}</h3>
-                    <p className="text-gray-600 mb-2">{product.description}</p>
-                    <div className="flex justify-between items-center">
-                      <span className="text-orange-500 text-xl font-bold">
-                        R$ {product.price.toFixed(2).replace(".", ",")}
-                      </span>
+              return (
+                <div
+                  key={product.id}
+                  className="bg-white rounded-lg shadow-md p-4"
+                >
+                  <Image
+                    src={product.image || "/placeholder.svg"}
+                    alt={product.name}
+                    width={400}
+                    height={200}
+                    className="w-full h-48 object-cover rounded-md mb-4"
+                  />
+                  <h3 className="text-xl font-bold">{product.name}</h3>
+                  <p className="text-gray-600 mb-2">{product.description}</p>
+                  <div className="flex justify-between items-center">
+                    <span className="text-orange-500 text-xl font-bold">
+                      R$ {product.price.toFixed(2).replace(".", ",")}
+                    </span>
 
-                      {quantity > 0 ? (
-                        <div className="flex items-center gap-2">
-                          <button
-                            className="bg-orange-500 text-white rounded-full w-8 h-8 flex items-center justify-center"
-                            onClick={() =>
-                              updateQuantity(product.id, quantity - 1)
-                            }
-                          >
-                            <Minus className="w-4 h-4" />
-                          </button>
-                          <span className="text-lg">{quantity}</span>
-                          <button
-                            className="bg-orange-500 text-white rounded-full w-8 h-8 flex items-center justify-center"
-                            onClick={() =>
-                              updateQuantity(product.id, quantity + 1)
-                            }
-                          >
-                            <Plus className="w-4 h-4" />
-                          </button>
-                        </div>
-                      ) : (
+                    {quantity > 0 ? (
+                      <div className="flex items-center gap-2">
                         <button
-                          className="bg-orange-500 text-white px-4 py-2 rounded-full hover:bg-orange-600 transition-colors"
-                          onClick={() => addItem(product)}
+                          className="bg-orange-500 text-white rounded-full w-8 h-8 flex items-center justify-center"
+                          onClick={() =>
+                            updateQuantity(product.id, quantity - 1)
+                          }
                         >
-                          Adicionar
+                          <Minus className="w-4 h-4" />
                         </button>
-                      )}
-                    </div>
+                        <span className="text-lg">{quantity}</span>
+                        <button
+                          className="bg-orange-500 text-white rounded-full w-8 h-8 flex items-center justify-center"
+                          onClick={() =>
+                            updateQuantity(product.id, quantity + 1)
+                          }
+                        >
+                          <Plus className="w-4 h-4" />
+                        </button>
+                      </div>
+                    ) : (
+                      <button
+                        className="bg-orange-500 text-white px-4 py-2 rounded-full hover:bg-orange-600 transition-colors"
+                        onClick={() => addItem(product)}
+                      >
+                        Adicionar
+                      </button>
+                    )}
                   </div>
-                );
-              })}
-            </div>
+                </div>
+              );
+            })}
           </div>
         </section>
 
