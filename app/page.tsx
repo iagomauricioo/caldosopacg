@@ -21,33 +21,34 @@ export default function Home() {
       {/* Navbar */}
       <Navbar />
 
-      <main className="flex-1 pb-24 md:pb-0">
+      <main className="flex-1 pb-24 md:pb-0 mt-12">
         {/* Hero Section */}
-        <div className="relative h-64 md:h-96 mb-6">
-          <Image
-            src="/images/caldo-frango.png"
-            alt="Caldo fumegante"
-            width={1200}
-            height={600}
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-black/30 flex flex-col justify-end p-6 md:p-12">
-            <h2 className="text-2xl md:text-4xl font-bold text-white">
-              Sabor que aquece sua alma
-            </h2>
-            <p className="text-white md:text-xl">
-              Caldos artesanais feitos com amor
-            </p>
+        <div className="px-4 md:px-8 max-w-7xl mx-auto mb-6 text-amber-100">
+          <div className="relative rounded-lg overflow-hidden h-64 md:h-96">
+            <Image
+              src="/images/caldo-frango.png"
+              alt="Caldo fumegante"
+              width={1200}
+              height={600}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0B3B2C]/80 via-transparent to-transparent flex flex-col justify-end p-6 md:p-12">
+              <h2 className="text-2xl md:text-4xl font-bold drop-shadow-md">
+                Sabor que aquece sua alma
+              </h2>
+              <p className="md:text-xl drop-shadow-md">
+                Caldos artesanais feitos com amor
+              </p>
+            </div>
           </div>
         </div>
 
-        {/* Nossos Caldos Section */}
+        {/* Mais pedidos Section */}
         <section className="px-4 md:px-8 max-w-7xl mx-auto mb-8">
-          <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-6">
-            Nossos Caldos
-          </h2>
-
           <div className="px-4 md:px-8 max-w-7xl mx-auto mb-40">
+            <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-[#0B3B2C]">
+              Os mais pedidos 🔥
+            </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {products.map((product) => {
                 const quantity = getItemQuantity(product.id);

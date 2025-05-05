@@ -10,7 +10,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <header className="bg-[#0B3B2C] text-amber-50">
+    <header className="bg-[#0B3B2C] text-amber-100">
       {/* Mobile Navbar */}
       <div className="flex justify-between items-center p-4 md:hidden">
         <Link href="/">
