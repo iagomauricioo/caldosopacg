@@ -17,9 +17,3 @@ class Produto(models.Model):
             "precos_em_centavos_por_tamanho": self.precos_em_centavos_por_tamanho
         }
     
-class ProdutosDisponveis(models.Model):
-    data_disponibilidade = models.DateField()
-    produtos_disponiveis = models.ForeignKey(Produto, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return f"{self.produto.nome} - {self.tamanho}"
