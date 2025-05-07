@@ -5,3 +5,5 @@ from .serializers import ProdutoSerializer
 class ProdutoViewSet(viewsets.ModelViewSet):
     queryset = Produto.objects.all()
     serializer_class = ProdutoSerializer
+
+

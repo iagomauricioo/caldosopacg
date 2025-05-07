@@ -1,21 +1,25 @@
 from django.db import models
-from django.contrib.postgres.fields import ArrayField
-
+from django.contrib.postgres.fields import ArrayField, JSONField
 
 class Produto(models.Model):
     nome = models.CharField(max_length=255)
     descricao = models.TextField()
-    tamanhos_disponiveis = ArrayField(models.IntegerField(), default=list)
-    preco_em_centavos = models.IntegerField()
+    precos_em_centavos_por_tamanho = models.JSONField(default=dict)
 
     def __str__(self):
         return self.nome
+
+    def to_json(self):
+        return {
+            "id": self.id,
+            "nome": self.nome,
+            "descricao": self.descricao,
+            "precos_em_centavos_por_tamanho": self.precos_em_centavos_por_tamanho
+        }
     
 class ProdutosDisponveis(models.Model):
     data_disponibilidade = models.DateField()
-    produto = models.ForeignKey(Produto, on_delete=models.CASCADE)
-    tamanho = models.CharField(max_length=255)
-    quantidade = models.IntegerField()
+    produtos_disponiveis = models.ForeignKey(Produto, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.produto.nome} - {self.tamanho}"
