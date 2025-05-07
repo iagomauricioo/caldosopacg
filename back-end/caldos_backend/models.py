@@ -17,3 +17,10 @@ class Produto(models.Model):
             "precos_em_centavos_por_tamanho": self.precos_em_centavos_por_tamanho
         }
     
+class Disponibilidade(models.Model):
+    data = models.DateField(unique=True)
+    
+class ProdutoDisponivel(models.Model):
+    disponibilidade = models.ForeignKey(Disponibilidade, on_delete=models.CASCADE, related_name='produtos')
+    produto = models.ForeignKey(Produto, on_delete=models.CASCADE)
+    quantidade_disponivel_em_gramas = models.IntegerField()
