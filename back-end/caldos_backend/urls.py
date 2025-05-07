@@ -7,5 +7,5 @@ router.register(r'produtos', ProdutoViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('produtos/disponiveis', ProdutosDisponiveisView.as_view(), name='produtos-disponiveis'),
+    path('produtos-disponiveis/', ProdutosDisponiveisView.as_view(), name='produtos-disponiveis'),
 ]

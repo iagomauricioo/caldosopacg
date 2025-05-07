@@ -1,4 +1,4 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, generics
 from .models import Disponibilidade, Produto
 from .serializers import DisponibilidadeSerializer, ProdutoSerializer
 from django.http import Http404
