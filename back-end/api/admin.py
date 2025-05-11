@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from caldos_backend.forms import ProdutoAdminForm
+from api.forms import ProdutoAdminForm
 from .models import Produto
 
 @admin.register(Produto)

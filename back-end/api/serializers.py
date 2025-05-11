@@ -1,5 +1,8 @@
 from rest_framework import serializers
-from .models import Disponibilidade, Produto, ProdutoDisponivel
+from .models import ProdutoDisponivel, Produto, ProdutoDisponivel
+from .models import Cliente, Endereco
+
+# api produtos
 
 class ProdutoSerializer(serializers.ModelSerializer):
     precos_em_centavos_por_tamanho = serializers.JSONField()
@@ -11,7 +14,7 @@ class ProdutoSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         precos = validated_data.pop('precos_em_centavos_por_tamanho')
         return Produto.objects.create(precos_em_centavos_por_tamanho=precos, **validated_data)
-    
+
 
 class ProdutoDisponivelSerializer(serializers.ModelSerializer):
     # Inclui todos os campos do Produto
@@ -29,7 +32,39 @@ class DisponibilidadeSerializer(serializers.ModelSerializer):
         many=True,
         source='produtos'
     )
+
+    class Meta:
+        model = ProdutoDisponivel
+        fields = ['data', 'produtos_disponiveis']
+
+# api clientes
+class EnderecoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Endereco
+        fields = '__all__'
+
+class ClienteSerializer(serializers.ModelSerializer):
+    endereco = EnderecoSerializer()
     
     class Meta:
-        model = Disponibilidade
-        fields = ['data', 'produtos_disponiveis']
+        model = Cliente
+        fields = ['id', 'nome', 'email', 'telefone' , 'endereco']
+        
+    def create(self, validated_data):
+        endereco_data = validated_data.pop('endereco')
+        endereco  = Endereco.objects.create(**endereco_data)
+        return Cliente.objects.create(endereco=endereco, **validated_data)
+    
+    def update(self, instance, validated_data):
+        for attr, value in validated_data.items():
+            if attr == 'endereco':
+                for key, val in value.items():
+                    setattr(instance.endereco, key, val)
+                instance.endereco.save()
+            else:
+                setattr(instance, attr, value)
+        instance.save()
+        return instance
+
+    
+        

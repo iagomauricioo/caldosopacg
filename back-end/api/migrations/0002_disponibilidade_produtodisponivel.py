@@ -6,7 +6,7 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("caldos_backend", "0001_initial"),
+        ("api", "0001_initial"),
     ]
 
     operations = [
@@ -43,14 +43,14 @@ class Migration(migrations.Migration):
                     models.ForeignKey(
                         on_delete=django.db.models.deletion.CASCADE,
                         related_name="produtos",
-                        to="caldos_backend.disponibilidade",
+                        to="api.disponibilidade",
                     ),
                 ),
                 (
                     "produto",
                     models.ForeignKey(
                         on_delete=django.db.models.deletion.CASCADE,
-                        to="caldos_backend.produto",
+                        to="api.produto",
                     ),
                 ),
             ],
