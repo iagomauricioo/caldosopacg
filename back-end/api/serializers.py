@@ -17,15 +17,31 @@ class ProdutoSerializer(serializers.ModelSerializer):
 
 
 class ProdutoDisponivelSerializer(serializers.ModelSerializer):
-    # Inclui todos os campos do Produto
-    id = serializers.IntegerField(source='produto.id')
-    nome = serializers.CharField(source='produto.nome')
-    descricao = serializers.CharField(source='produto.descricao')
-    precos_em_centavos_por_tamanho = serializers.JSONField(source='produto.precos_em_centavos_por_tamanho')
-    
+    produto_id = serializers.IntegerField(source='produto.id')
+
     class Meta:
         model = ProdutoDisponivel
-        fields = ['id', 'nome', 'descricao', 'precos_em_centavos_por_tamanho', 'quantidade_disponivel_em_gramas']
+        fields = ['produto_id', 'quantidade_disponivel_em_gramas']
+
+class ProdutoDisponivelPostSerializer(serializers.Serializer):
+    data = serializers.DateField()
+    produtos_disponiveis = ProdutoDisponivelSerializer(many=True)
+    
+    def create(self, validated_data):
+        data = validated_data['data']
+        produtos = validated_data['produtos_disponiveis']
+        result = []
+        for prod in produtos:
+            produto_id = prod['produto']['id']
+            qtd = prod['quantidade_disponivel_em_gramas']
+            produto = Produto.objects.get(id=produto_id)
+            obj, _ = ProdutoDisponivel.objects.update_or_create(
+                data=data,
+                produto=produto,
+                defaults={'quantidade_disponivel_em_gramas': qtd}
+            )
+            result.append(obj)
+        return result
 
 class DisponibilidadeSerializer(serializers.ModelSerializer):
     produtos_disponiveis = ProdutoDisponivelSerializer(

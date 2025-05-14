@@ -9,11 +9,9 @@ router.register(r'produtos', ProdutoViewSet)
 
 urlpatterns = [
     path("", include(router.urls)),
-    path(
-        "produtos-disponiveis/",
-        ProdutosDisponiveisView.as_view(),
-        name="produtos-disponiveis",
-    ),
+    
+    path('produtos/disponiveis', ProdutosDisponiveisView.as_view()),
+
     path("clientes", ClienteListCreateView.as_view(), name="clientes-list-create"),
     path("clientes/<int:pk>", ClienteUpdateView.as_view(), name="clientes-update"),
 ]

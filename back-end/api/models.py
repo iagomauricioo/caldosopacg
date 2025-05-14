@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.postgres.fields import ArrayField, JSONField
 
 # Api de produtos
-
 class Produto(models.Model):
     nome = models.CharField(max_length=255)
     descricao = models.TextField()
@@ -18,13 +17,16 @@ class Produto(models.Model):
             "descricao": self.descricao,
             "precos_em_centavos_por_tamanho": self.precos_em_centavos_por_tamanho
         }
+    
 class ProdutoDisponivel(models.Model):
-    data = models.DateField(unique=True)
+    data = models.DateField()
     produto = models.ForeignKey(Produto, on_delete=models.CASCADE)
     quantidade_disponivel_em_gramas = models.IntegerField()
     
-    # api de clientes
-    
+    class Meta:
+        unique_together = ['data', 'produto']
+
+# api de clientes
 class Endereco(models.Model):
     rua = models.CharField(max_length=255)
     numero = models.CharField(max_length=10)

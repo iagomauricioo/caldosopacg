@@ -1,9 +1,12 @@
+from django.shortcuts import get_list_or_404
 from rest_framework import viewsets, generics
 from .models import ProdutoDisponivel, Produto
-from .serializers import DisponibilidadeSerializer, ProdutoSerializer
+from .serializers import DisponibilidadeSerializer, ProdutoDisponivelPostSerializer, ProdutoDisponivelSerializer, ProdutoSerializer
 from django.http import Http404
 from .models import Cliente
 from .serializers import ClienteSerializer
+from rest_framework.response import Response
+from rest_framework import status
 
 #api produtos
 
@@ -11,23 +14,26 @@ class ProdutoViewSet(viewsets.ModelViewSet):
     queryset = Produto.objects.all()
     serializer_class = ProdutoSerializer
 
-
 class ProdutosDisponiveisView(generics.RetrieveAPIView):
     serializer_class = DisponibilidadeSerializer
 
-    def get_object(self):
-        data = self.request.query_params.get('data')
+    def get(self, request):
+        data = request.query_params.get('data')
         if not data:
-            raise Http404("Parâmetro 'data' é obrigatório")
-
-        try:
-            return ProdutoDisponivel.objects.prefetch_related("produtos__produto").get(
-                data=data
-            )
-        except ProdutoDisponivel.DoesNotExist:
-            # Retorna uma disponibilidade vazia se não existir para a data
-            return ProdutoDisponivel(data=data)
+            return Response({'error': 'Informe a data'}, status=status.HTTP_400_BAD_REQUEST)
+        produtos = get_list_or_404(ProdutoDisponivel, data=data)
+        serializer = ProdutoDisponivelSerializer(produtos, many=True)
+        return Response({
+            "data": data,
+            "produtos_disponiveis": serializer.data
+        })
         
+    def post(self, request):
+        serializer = ProdutoDisponivelPostSerializer(data=request.data)
+        if serializer.is_valid():
+            objs = serializer.save()
+        return Response({'status': 'ok'}, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 #api clientes
 
