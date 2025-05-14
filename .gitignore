@@ -33,6 +33,10 @@ next-env.d.ts
 __pycache__
 db.sqlite3
 media
+settings.cpython-311.pyc
+urls.cpython-311.pyc
+wsgi.cpython-311.pyc
+__init__.cpython-311.pyc
 
 # Backup files # 
 *.bak 
